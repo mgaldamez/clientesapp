@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:fragment="head">
+<meta charset="UTF-8">
+<title th:text="${titulo}"></title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+
+<header th:fragment="header" class=" bg-dark text-white">
+    <div class="container ">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2  mb-md-0">
+          <li><a th:href="@{/index}" class="nav-link px-2 text-white">Home</a></li>
+          <li><a th:href="@{/views/clientes/}" class="nav-link px-2 text-white">Clientes</a></li>
+          <li><a th:href="@{/views/clientes/create}" class="nav-link px-2 text-white">Crear</a></li>
+         
+        </ul>
+
+      </div>
+    </div>
+ 		<!-- POPUPS -->
+		<div class="alert alert-success alert-dismissible"
+			th:if="${success != null}">
+			<label th:text="${success}"></label>
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+		<div class="alert alert-danger alert-dismissible"
+			th:if="${error != null}">
+			<label th:text="${error}"></label>
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+		<div class="alert alert-warning alert-dismissible"
+			th:if="${warning != null}">
+			<label th:text="${warning}"></label>
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+		<div class="alert alert-info alert-dismissible"
+			th:if="${info != null}">
+			<label th:text="${info}"></label>
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+
+	</header>
+
+	<!-- Contenido -->
+	<div class="container"></div>
+
+	<!-- footer -->
+	<footer th:fragment="footer" class="bg-dark text-white text-end fixed-bottom">
+
+		<div class="container">
+			<p>Copyright 2021</p>
+		</div>
+		<script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
+	</footer>
+</body>
+</html>

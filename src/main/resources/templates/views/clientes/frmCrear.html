@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="template::head">
+<meta charset="UTF-8">
+<title th:text="${titulo}"></title>
+</head>
+<body>
+	<header th:replace="template::header"></header>
+	<div class="container">
+		<form th:action="@{/views/clientes/save}" method="post"
+			th:object="${cliente}">
+			<input type="hidden" th:field="*{id}">
+
+			<div class="card py-3">
+				<div class="card-header">
+					<p class="fs-2 fw-bold" th:text="${titulo}"></p>
+				</div>
+				<div class="card-body">
+					<div class="row g-3">
+						<div class="col-sm-6">
+							<label for="nombre" class="form-label">Nombre:</label> <input
+								type="text" th:field="*{nombre}" class="form-control "
+								id="nombre" placeholder="Nombre del cliente" required="required">
+
+
+						</div>
+						<div class="col-sm-6">
+							<label for="apellido" class="form-label">Apellido:</label> <input
+								type="text" th:field="*{apellido}" class="form-control "
+								id="apellido" placeholder="Apellido del cliente"
+								required="required">
+
+
+						</div>
+						<div class="col-sm-6">
+							<label for="documentType" class="form-label">Tipo de
+								Documento:</label> <select id="tipo_documento"
+								th:field="*{tipo_documento}" class="form-select" required>
+								<option value="">--Seleccionar--</option>
+								<option th:each="document: ${documentTypes}"
+									th:text="${document.nombre}" th:value="${document.id}" />
+							</select>
+
+						</div>
+						<div class="col-sm-6">
+							<label for="documento" class="form-label">Documento:</label> <input
+								type="text" th:field="*{documento}" class="form-control"
+								id="documento" placeholder="Numero de Documento"
+								required="required">
+
+						</div>
+						<div class="col-sm-6">
+							<label for="telefono" class="form-label">Telefono:</label> <input
+								type="text" th:field="*{telefono}" class="form-control"
+								id="telefono" placeholder="Telefono del cliente"
+								required="required">
+						</div>
+						<div class="col-sm-6">
+							<label for="email" class="form-label">Correo:</label> <input
+								type="email" th:field="*{email}" class="form-control" id="email"
+								placeholder="Correo del cliente" required="required">
+
+						</div>
+						<div class="col-12">
+							<label for="direccion" class="form-label">Direccion:</label>
+							<textarea th:field="*{direccion}" class="form-control"
+								id="direccion" placeholder="Direccion del cliente"
+								required="required"></textarea>
+							<br><br>
+
+						</div>
+
+					</div>
+					<div class="card-footer">
+						<input type="submit" class="btn btn-primary" Value="Guardar" />
+					</div>
+
+
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+	<footer th:replace="template::footer"></footer>
+
+</body>
+</html>

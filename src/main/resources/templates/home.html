@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://thymeleaf.org">
+<head th:replace="template::head">
+<meta charset="UTF-8">
+<title th:text="${titulo}"></title>
+</head>
+<body>
+<header th:replace="template::header"></header>
+<div class="container">
+<h1 class="text-center">Bienvenidos</h1>
+</div>
+<div class="container text-center" >
+
+
+<div class="card bg-light mx-auto" style="width: 12rem;"  >
+  <a th:href="@{/views/clientes/}" ><img th:src="@{/images/user.png}"  class="card-img" ></a>
+  <div class="card-body">
+    <h5 class="card-title fw-bold">Clientes</h5>
+  </div>
+</div>
+
+
+</div>
+
+
+
+<footer th:replace="template::footer"></footer>
+
+</body>
+</html>

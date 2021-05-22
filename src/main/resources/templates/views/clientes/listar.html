@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="template::head">
+<meta charset="UTF-8">
+<title th:text="${titulo}"></title>
+</head>
+<body>
+	<header th:replace="template::header"></header>
+	<div class="container">
+		<h1 class="text-center" th:text="${titulo}"></h1>
+	</div>
+	<div class="container">
+
+		<a class="btn btn-primary btn-sm" th:href="@{/views/clientes/create}">Crear
+			Cliente</a> <br> <br>
+		<div class="table-responsive">
+			<table class="table">
+
+				<thead class="table-dark">
+					<tr>
+						<th>Id</th>
+						<th>Nombre</th>
+						<th>Apellido</th>
+						<th>Tipo de Documento</th>
+						<th>Documento</th>
+						<th>Telefono</th>
+						<th>Direccion</th>
+						<th>E-mail</th>
+						<th>Editar</th>
+						<th>Eliminar</th>
+					</tr>
+
+				</thead>
+				<tbody>
+
+					<tr th:each="cl:${clientes}">
+						<td th:text="${cl.id}"></td>
+						<td th:text="${cl.nombre}"></td>
+						<td th:text="${cl.apellido}"></td>
+						<td th:text="${cl.tipo_documento.nombre}"></td>
+						<td th:text="${cl.documento}"></td>
+						<td th:text="${cl.telefono}"></td>
+						<td th:text="${cl.direccion}"></td>
+						<td th:text="${cl.email}"></td>
+						<td><a class="btn btn-sm btn-success"
+							th:href="@{/views/clientes/edit/}+${cl.id}">editar</a></td>
+						<td><a class="btn btn-sm btn-danger"
+							th:href="@{/views/clientes/delete/}+${cl.id}"
+							onclick="return confirm('esta seguro de eliminar el registro?')">Eliminar</a>
+						</td>
+
+
+					</tr>
+				</tbody>
+			</table>
+			 
+			<h2 th:if="${clientes.isEmpty()}">No hay Clientes</h2>
+		</div>
+	</div>
+
+
+	<footer th:replace="template::footer"></footer>
+
+</body>
+</html>
